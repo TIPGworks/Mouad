@@ -1,0 +1,15 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void deleteNextNode(Student* head, char name[]) {
+    Student* temp = head;
+    while (temp != NULL && temp->next != NULL) {
+        if (strcmp(temp->name, name) == 0) {
+            Student* tempNext = temp->next;
+            temp->next = tempNext->next;
+            free(tempNext);
+            break;
+        }
+        temp = temp->next;
+    }
+}
