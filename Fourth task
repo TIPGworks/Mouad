@@ -1,0 +1,13 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+Student* searchStudentByName(Student* head, char name[]) {
+    Student* temp = head;
+    while (temp != NULL) {
+        if (strcmp(temp->name, name) == 0) {
+            return temp;
+        }
+        temp = temp->next;
+    }
+    return NULL;
+}
