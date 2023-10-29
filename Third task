@@ -1,0 +1,36 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+typedef struct Student {
+    int number;
+    char name[50];
+    int age;
+    struct Student* next;
+} Student;
+
+Student* addStudentToList(Student* head, int number, char name[], int age) {
+    Student* newStudent = (Student*)malloc(sizeof(Student));
+    newStudent->number = number;
+    strcpy(newStudent->name, name);
+    newStudent->age = age;
+    newStudent->next = NULL;
+    if (head == NULL) {
+        head = newStudent;
+    } else {
+        Student* temp = head;
+        while (temp->next != NULL) {
+            temp = temp->next;
+        }
+        temp->next = newStudent;
+    }
+    return head;
+}
+
+void printStudents(Student* head) {
+    int count = 1;
+    Student* temp = head;
+    while (temp != NULL) {
+        printf("%d- %s %d %d\n", count++, temp->name, temp->age, temp->number);
+        temp = temp->next;
+    }
+}
