@@ -1,0 +1,29 @@
+#include <stdio.h>
+#include <stdlib.h>
+
+void sortAndPrintNumbers(Node* head) {
+    int count = 0;
+    int numbers[100];
+    Node* temp = head;
+    while (temp != NULL) {
+        numbers[count++] = temp->data;
+        temp = temp->next;
+    }
+    for (int i = 0; i < count - 1; i++) {
+        for (int j = i + 1; j < count; j++) {
+            if (numbers[i] < numbers[j]) {
+                int temp = numbers[i];
+                numbers[i] = numbers[j];
+                numbers[j] = temp;
+            }
+        }
+    }
+    printf("Sorted Numbers: ");
+    for (int i = 0; i < count; i++) {
+        printf("%d", numbers[i]);
+        if (i < count - 1) {
+            printf("->");
+        }
+    }
+    printf("\n");
+}
