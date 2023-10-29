@@ -1,0 +1,19 @@
+#include <stdio.h>
+#include <stdlib.h>
+#include <string.h>
+
+void printLongestName(Student* head) {
+    int maxLength = 0;
+    char longestName[50];
+    Student* temp = head;
+    while (temp != NULL) {
+        int length = strlen(temp->name);
+        if (length > maxLength) {
+            maxLength = length;
+            strcpy(longestName, temp->name);
+        }
+        temp = temp->next;
+    }
+    printf("The longest name in the list: %s\n", longestName);
+    printf("Length: %d\n", maxLength);
+}
